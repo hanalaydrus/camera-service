@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  mysql:
+    image: mariadb:10.3
+    container_name: db-camera
+    volumes:
+      - container-volume:/var/lib/mysql
+      - ./camera.sql:/docker-entrypoint-initdb.d/camera.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: camera
+    ports:
+      - "3306:3306"
+    restart: always
+    networks: 
+      - container_net
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mysql:3306
+    restart: always
+    networks: 
+      - container_net
+
+  service:
+    build: .
+    container_name: camera-service
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "50052:50052"
+    environment:
+      DB_HOST: "mysql"
+      DB_PORT: "3306"
+      DB_NAME: "camera"
+      DB_ROOT_PASS: "root"
+    restart: always
+    networks: 
+      - container_net
+
+volumes:
+  container-volume:
+
+networks:
+  container_net:
+    driver: bridge
