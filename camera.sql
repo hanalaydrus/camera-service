@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.8.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2018 at 08:38 PM
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.1.11-1+ubuntu16.04.1+deb.sury.org+1
+-- Generation Time: Apr 19, 2018 at 08:52 PM
+-- Server version: 5.7.21
+-- PHP Version: 7.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,12 +41,12 @@ CREATE TABLE `camera` (
 --
 
 INSERT INTO `camera` (`camera_id`, `url`, `street_name`, `latitude`, `longitude`) VALUES
-(1, 'http://127.0.0.1:5001/video_feed', 'Jalan Dago arah Dago Atas', '-6.879313', '107.616435'),
-(2, 'http://127.0.0.1:5002/video_feed', 'Jalan Ir.H.Djuanda depan SMAN 1 arah perempatan Dago Merdeka', '-6.895575', '107.612884'),
-(3, 'http://127.0.0.1:5003/video_feed', 'Jalan Ir.H.Djuanda depan KFC Dago arah Jalan Merdeka', '-6.901754', '107.611927'),
-(4, 'http://127.0.0.1:5004/video_feed', 'Jalan Ir.H.Djuanda depan KFC Dago arah perempatan Dago Merdeka', '-6.901741', '107.611819'),
-(5, 'http://127.0.0.1:5005/video_feed', 'Jalan Merdeka depan SDN 11 Banjarsari', '-6.913381', '107.610379'),
-(6, 'http://127.0.0.1:5006/video_feed', 'Jalan Pungkur depan ITC Kebon Kelapa', '-6.927415', '107.606491');
+(1, 'http://traffic-streaming-service:5001/video_feed', 'Jalan Dago arah Dago Atas', '-6.879313', '107.616435'),
+(2, 'http://traffic-streaming-service:5002/video_feed', 'Jalan Ir.H.Djuanda depan SMAN 1 arah perempatan Dago Merdeka', '-6.895575', '107.612884'),
+(3, 'http://traffic-streaming-service:5003/video_feed', 'Jalan Ir.H.Djuanda depan KFC Dago arah Jalan Merdeka', '-6.901754', '107.611927'),
+(4, 'http://traffic-streaming-service:5004/video_feed', 'Jalan Ir.H.Djuanda depan KFC Dago arah perempatan Dago Merdeka', '-6.901741', '107.611819'),
+(5, 'http://traffic-streaming-service:5005/video_feed', 'Jalan Merdeka depan SDN 11 Banjarsari', '-6.913381', '107.610379'),
+(6, 'http://traffic-streaming-service:5006/video_feed', 'Jalan Pungkur depan ITC Kebon Kelapa', '-6.927415', '107.606491');
 
 --
 -- Indexes for dumped tables
@@ -65,6 +67,8 @@ ALTER TABLE `camera`
 --
 ALTER TABLE `camera`
   MODIFY `camera_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  mysql:
+  db-camera:
     image: mariadb:10.3
     container_name: db-camera
     volumes:
@@ -13,44 +13,34 @@ services:
     ports:
       - "3306:3306"
     restart: always
-    networks: 
-      - container_net
 
-  phpmyadmin:
+  phpmyadmin-camera:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: phpmyadmin-camera
     links:
-      - mysql
+      - db-camera
     ports:
       - "8080:80"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      PMA_HOST: mysql:3306
+      PMA_HOST: db-camera:3306
     restart: always
-    networks: 
-      - container_net
 
-  service:
+  camera-service:
     build: .
     container_name: camera-service
     depends_on:
-      - mysql
+      - db-camera
     links:
-      - mysql
+      - db-camera
     ports:
       - "50052:50052"
     environment:
-      DB_HOST: "mysql"
+      DB_HOST: "db-camera"
       DB_PORT: "3306"
       DB_NAME: "camera"
       DB_ROOT_PASS: "root"
     restart: always
-    networks: 
-      - container_net
 
 volumes:
   container-volume:
-
-networks:
-  container_net:
-    driver: bridge
