@@ -10,8 +10,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: camera
-    ports:
-      - "3306:3306"
     restart: always
 
   phpmyadmin-camera:
@@ -20,7 +18,7 @@ services:
     links:
       - db-camera
     ports:
-      - "8080:80"
+      - "9000:80"
     environment:
       MYSQL_ROOT_PASSWORD: root
       PMA_HOST: db-camera:3306
@@ -33,8 +31,8 @@ services:
       - db-camera
     links:
       - db-camera
-    ports:
-      - "50052:50052"
+#    ports:
+#      - "50052:50052"
     environment:
       DB_HOST: "db-camera"
       DB_PORT: "3306"
