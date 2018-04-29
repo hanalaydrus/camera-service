@@ -2,14 +2,12 @@ version: '3'
 
 services:
   db-camera:
-    image: mariadb:10.3
+    image: asia.gcr.io/tugas-akhir-hana/mariadb-camera:latest
     container_name: db-camera
     volumes:
       - container-volume:/var/lib/mysql
-      - ./camera.sql:/docker-entrypoint-initdb.d/camera.sql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: camera
     restart: always
 
   phpmyadmin-camera:
