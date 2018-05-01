@@ -29,8 +29,8 @@ services:
       - db-camera
     links:
       - db-camera
-#    ports:
-#      - "50052:50052"
+    ports:
+      - "50052:50052"
     environment:
       DB_HOST: "db-camera"
       DB_PORT: "3306"

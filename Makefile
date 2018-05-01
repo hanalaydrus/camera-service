@@ -1,5 +1,5 @@
 run:
-	gunicorn --worker-class gthread --threads 5 -t 3600 -b 0.0.0.0:50052 main:app
+	python -m flask run --host=0.0.0.0 --port=50052
 
 build_db_image:
 	docker build -t asia.gcr.io/tugas-akhir-hana/mariadb-camera:latest ./mariadb/

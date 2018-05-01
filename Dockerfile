@@ -2,11 +2,11 @@ FROM python:3.6
 
 RUN apt-get update
 
-RUN pip install Flask gunicorn mysqlclient
+RUN pip install Flask mysqlclient
 
 COPY . /app
 WORKDIR /app
 
-EXPOSE 50052
+ENV FLASK_APP=main.py
 
 CMD ["make","run"]
