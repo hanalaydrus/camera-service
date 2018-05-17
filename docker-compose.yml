@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db-camera:
-    image: asia.gcr.io/tugas-akhir-hana/mariadb-camera:latest
+    build: ./build
     container_name: db-camera
     volumes:
       - container-volume:/var/lib/mysql
