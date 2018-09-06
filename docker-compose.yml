@@ -10,17 +10,17 @@ services:
       MYSQL_ROOT_PASSWORD: root
     restart: always
 
-  phpmyadmin-camera:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-camera
-    links:
-      - db-camera
-    ports:
-      - "9000:80"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      PMA_HOST: db-camera:3306
-    restart: always
+  # phpmyadmin-camera:
+  #   image: phpmyadmin/phpmyadmin
+  #   container_name: phpmyadmin-camera
+  #   links:
+  #     - db-camera
+  #   ports:
+  #     - "9000:80"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     PMA_HOST: db-camera:3306
+  #   restart: always
 
   camera-service:
     build: .
