@@ -1,8 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'asia.gcr.io/$PROJECT_ID/camera-service', '.' ]
+  args: [ 'build', '-t', 'asia.gcr.io/$PROJECT_ID/camera-service:latest', '.' ]
 images:
 - 'asia.gcr.io/$PROJECT_ID/camera-service'
 options:
     machineType: 'N1_HIGHCPU_8'
-tags: ['latest']
