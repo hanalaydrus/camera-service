@@ -17,6 +17,6 @@ https://docs.docker.com/compose/install/
 
 **3. Clone this repo** `git clone https://github.com/hanalaydrus/camera-service.git`
 
-**4. Run** `docker-compose up --build` **or** `sudo docker-compose up —-build`
+**4. Run** `docker-compose up --build` **or** `sudo docker-compose up --build`
 
 **5. The camera service should already run**, you could check it through `docker ps`
